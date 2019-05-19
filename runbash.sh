@@ -3,7 +3,7 @@
 # TO DO : Assign static ip to rpi, this will be given to the ip_here
 # TO DO : ssh-copy-id -i ~/.ssh/id_rsa.pub pi@ip_here 
 
-ssh -X pi@ip_here
+ssh pi@ip_here
 
 cd Desktop/AppleSorting
 raspistill -t 500 -o try.jpg
@@ -18,7 +18,7 @@ python3 run.py > Angle.txt
 
 scp ./Angle.txt pi@ip_here:/home/pi/Desktop/AppleSorting
 
-ssh -X pi@ip_here
+ssh pi@ip_here
 cd Desktop/AppleSorting
 
 # proj.py takes angle as input and then run servo 
