@@ -1,7 +1,6 @@
 import red_green
 import size_sorting
 
-#HOW TO GET THE FILENAME FROM CAMERA?
 filename="./tempr.jpg"
 
 is_red=False
