@@ -27,7 +27,7 @@ For testing, we will send images one by one.
 """
 
 # Total images = 400, 200 good and 200 bad
-# TODO image generation. see this from keras.preprocessing.image import ImageDataGenerator
+# TODO image generation. see this from keras.preprocessing.image import ImageDataGenerator 
 # They have used it here--> https://github.com/gsurma/image_classifier/blob/master/image_classifier.ipynb
 
 num_of_training =  280 # 70% training
