@@ -5,15 +5,8 @@ from keras.optimizers import SGD
 import matplotlib.pyplot as plt
 
 model = Sequential()
-model.add(Dense(units=128,activation="relu",input_shape=(784,)))
-model.add(Dense(units=128,activation="relu"))
-model.add(Dense(units=128,activation="relu"))
-model.add(Dense(units=10,activation="softmax"))
-
-model.compile(optimizer=SGD(0.001),loss="categorical_crossentropy",metrics=["accuracy"])
-
-epoch = 20
-model.load_weights("AppleSorting"+epoch+".h5")
+model = model.load('model_keras.h5')
+model.load_weights('model_weights.h5')
 
 def quality(filename):
 	# Load this image, is cv2 compatible?
@@ -24,4 +17,4 @@ def quality(filename):
 	if(classname==0):
 		return "GOOD"
 	else:
-		return "BAD"
+return "BAD"
