@@ -7,6 +7,10 @@ np.set_printoptions(threshold=sys.maxsize)
 def getsize(filename):
 	# print("1")
 	image1 = cv.imread(filename)
+	#at white background and also black backgorund for other parameters have to change======================
+	gray = cv.cvtColor(image1, cv.COLOR_BGR2GRAY)
+	ret, thresh = cv.threshold(gray, 240, 255, cv.THRESH_BINARY)
+	image1[thresh == 255] = 0
 	# imS = cv.resize(image1, (960, 940))
 	cv.imshow('boundaery image',image1)
 	cv.destroyAllWindows()

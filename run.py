@@ -10,6 +10,7 @@ filename="./try.jpg"
 im = cv2.imread(filename)
 im = cv2.resize(im, (500,500))
 im=Image.fromarray((im).astype(np.uint8))
+# im = cv2.cvtColor(im,cv2.COLOR_BGR2RGB)
 im.save("try.jpg")
 
 is_red=False
