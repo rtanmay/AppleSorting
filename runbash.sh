@@ -14,3 +14,5 @@ cd /home/tanmay/Desktop/GIT/AppleSorting
 scp user@192.168.10.101:~/Desktop/AppleSorting/try.jpg ./
 python3 run.py > Angle.txt
 scp ./Angle.txt user@192.168.10.101:~/Desktop/AppleSorting/
+
+ssh user@192.168.10.101 'bash -s' < runpi2.sh

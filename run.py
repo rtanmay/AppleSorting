@@ -3,7 +3,7 @@ import size_sorting
 import cv2
 from PIL import Image
 import numpy as np
-# import CNN_test
+# import CNNtest1
 
 filename="./try.jpg"
 
@@ -28,10 +28,12 @@ size_of_apple = size_sorting.getsize(filename)
 if(size_of_apple == "BIG"):
 	is_big=True
 
-# # QUALITY
-# quality_of_apple = CNN_test.quality(filename)
+# QUALITY
+# quality_of_apple = CNNtest1.quality(filename)
 # if(quality_of_apple=="GOOD"):
 # 	is_good=True
+
+# print("QUALITY=", is_good)
 
 # WRITE 8 combinations and angle accordingly
 
