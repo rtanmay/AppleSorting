@@ -5,11 +5,8 @@ from keras import layers, models, optimizers
 from keras.preprocessing.image import ImageDataGenerator, img_to_array, load_img
 from sklearn.model_selection import train_test_split
 import os, cv2
-
+import matplotlib.pyplot as plt
 ############################ DATA PROCESSING #####################################
-
-# Contains list of names of all images along with their pwd.
-# x_good = ["/home/user/AppleSorting/234.jpg", "er"]
 
 datadir="/home/tanmay/Desktop/GIT/AppleSorting/data"
 
@@ -22,9 +19,7 @@ for file in os.listdir("/home/tanmay/Desktop/GIT/AppleSorting/data/bad"):
 	x_bad.append(datadir+"/bad/"+file)
 
 # IMAGES
-x = x_good+x_bad 
-
-# print("x====",x)
+x = x_good + x_bad 
 
 # LABELS
 y = [] # 0:bad and 1:good
@@ -66,7 +61,7 @@ model.add(layers.MaxPooling2D((2,2)))
 model.add(layers.Flatten())
 model.add(layers.Dropout(0.5))
 model.add(layers.Dense(512, activation='relu'))
-model.add(layers.Dense(1,activation='softmax')) 
+model.add(layers.Dense(1,activation='sigmoid')) 
 
 # model.summary()
 
@@ -95,7 +90,7 @@ nval = len(X_val)
 history = model.fit_generator(
 	train_generator,
 	steps_per_epoch=ntrain,
-	epochs=10,
+	epochs=2,
 	validation_data=val_generator,
 	validation_steps=nval 
 	)
@@ -107,4 +102,24 @@ model.save('model_keras.h5')
 
 #######################################################
 # TODO: PLOT graph, to put into the poster
+acc = history.history['acc']
+val_acc = history.history['val_acc']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(1,len(acc)+1)
+
+plt.plot(epochs, acc,'b',label='Training accuracy')
+plt.plot(epochs, val_acc, 'r', label = 'Validation accuracy')
+plt.title('Training and Validation accuracy')
+plt.legend()
+
+plt.figure()
+
+plt.plot(epochs, loss, 'b', label='Training loss')
+plt.plot(epochs, val_loss, 'r', label = 'Validation loss')
+plt.title('Training and Validation loss')
+plt.legend()
+
+plt.show()
 #######################################################

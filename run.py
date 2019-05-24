@@ -3,19 +3,22 @@ import size_sorting
 import cv2
 from PIL import Image
 import numpy as np
-# import CNNtest1
+import CNNtest1
 
 filename="./try.jpg"
 
 im = cv2.imread(filename)
 im = cv2.resize(im, (500,500))
+# back = cv2.imread("./background.jpg")
+# im = im - back
+im = cv2.cvtColor(im,cv2.COLOR_BGR2RGB)
 im=Image.fromarray((im).astype(np.uint8))
-# im = cv2.cvtColor(im,cv2.COLOR_BGR2RGB)
 im.save("try.jpg")
 
+# Initialise the variables
 is_red=False
 is_big=False
-# is_good=False
+is_good=False
 Angle=-1
 
 
@@ -30,24 +33,29 @@ if(size_of_apple == "BIG"):
 	is_big=True
 
 # QUALITY
-# quality_of_apple = CNNtest1.quality(filename)
-# if(quality_of_apple=="GOOD"):
-# 	is_good=True
+quality_of_apple = CNNtest1.quality(filename)
+if(quality_of_apple=="GOOD"):
+	is_good=True
 
-# print("QUALITY=", is_good)
+# WRITE 5 combinations for 5 boxes and angle accordingly
 
-# WRITE 8 combinations and angle accordingly
+if(is_good==False):
+	print("BAD")
+	Angle =0
 
-if(is_red and is_big==False):
-	Angle = 0
+else:
+	print("GOOD")
+	if(is_red==False and is_big==False):
+		Angle = 79
 
-if(is_red and is_big):
-	Angle = 25
+	if(is_red and is_big==False):
+		Angle = 28
 
-if(is_red==False and is_big==False):
-	Angle = 50
+	if(is_red==False and is_big):
+		Angle = 103
 
-if(is_red==False and is_big):
-	Angle = 75
+	if(is_red and is_big):
+		Angle = 56
+
 
 print(Angle)
