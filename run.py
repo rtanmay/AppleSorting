@@ -3,7 +3,7 @@ import size_sorting
 import cv2
 from PIL import Image
 import numpy as np
-import CNNtest1
+import CNNtest
 
 filename="./try.jpg"
 
