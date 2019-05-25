@@ -6,6 +6,7 @@ from keras.preprocessing.image import ImageDataGenerator, img_to_array, load_img
 from sklearn.model_selection import train_test_split
 import os, cv2
 import matplotlib.pyplot as plt
+import random
 ############################ DATA PROCESSING #####################################
 
 datadir="/home/tanmay/Desktop/GIT/AppleSorting/data"
@@ -20,6 +21,7 @@ for file in os.listdir("/home/tanmay/Desktop/GIT/AppleSorting/data/bad"):
 
 # IMAGES
 x = x_good + x_bad 
+random.shuffle(x)
 
 # LABELS
 y = [] # 0:bad and 1:good
@@ -43,7 +45,7 @@ for i in x:
 X = np.array(X)
 y = np.array(y)
 
-percent_to_val = 0.20 # 20% data is assigned to validation, 80% to training
+percent_to_val = 0.30 # 30% data is assigned to validation, 70% to training
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size = percent_to_val, random_state=2)
 
 ################################ MODEL ##########################################
@@ -90,15 +92,15 @@ nval = len(X_val)
 history = model.fit_generator(
 	train_generator,
 	steps_per_epoch=ntrain,
-	epochs=2,
+	epochs=32,
 	validation_data=val_generator,
 	validation_steps=nval 
 	)
 
 ############### SAVE WEIGHTS ########################
 
-model.save_weights('model_weights.h5')
-model.save('model_keras.h5')
+model.save_weights('./temp_weight/model_weights.h5')
+model.save('./temp_weight/model_keras.h5')
 
 #######################################################
 # TODO: PLOT graph, to put into the poster

@@ -7,10 +7,10 @@ import cv2
 import numpy as np
 from keras.models import load_model
 
-model=load_model('model_keras.h5')
-model.load_weights('model_weights.h5')
+model=load_model('./weight_32/model_keras.h5')
+model.load_weights('./weight_32/model_weights.h5')
 
-model.summary()
+# model.summary()
 
 nrows = 150
 ncols = 150
@@ -30,7 +30,9 @@ def quality(filename):
 	labels=[]
 	for batch in test_datagen.flow(x, batch_size=1):
 		pred=model.predict(batch)
-		if pred > 0.5:
+		if pred > 0.5: #since 1 is good and 0 is bad in training label
 			return "GOOD"
 		else:
 			return "BAD"
+
+# print(quality("./try.jpg"))

@@ -9,7 +9,7 @@ def getsize(filename):
 	image1 = cv.imread(filename)
 	#at white background and also black backgorund for other parameters have to change======================
 	gray = cv.cvtColor(image1, cv.COLOR_BGR2GRAY)
-	ret, thresh = cv.threshold(gray, 240, 255, cv.THRESH_BINARY)
+	ret, thresh = cv.threshold(gray, 75, 255, cv.THRESH_BINARY)
 	image1[thresh == 255] = 0
 	# imS = cv.resize(image1, (960, 940))
 	cv.imshow('boundaery image',image1)
@@ -48,7 +48,7 @@ def getsize(filename):
 	# print(start_x,start_y,width,height)
 	# print("area of apple is ",width*height)
 	var=-1;
-	if ((width*height)<=75424):
+	if ((width*height)<=32000):
 	    var="SMALL"
 	else:
 	    var="BIG"

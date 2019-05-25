@@ -33,18 +33,18 @@ if(size_of_apple == "BIG"):
 	is_big=True
 
 # QUALITY
-quality_of_apple = CNNtest1.quality(filename)
+quality_of_apple = CNNtest.quality(filename)
 if(quality_of_apple=="GOOD"):
 	is_good=True
 
 # WRITE 5 combinations for 5 boxes and angle accordingly
 
 if(is_good==False):
-	print("BAD")
+	# print("BAD")
 	Angle =0
 
 else:
-	print("GOOD")
+	# print("GOOD")
 	if(is_red==False and is_big==False):
 		Angle = 79
 
